@@ -1,4 +1,4 @@
-package org.rakshith.UserActions;
+package org.rakshith.useractions;
 
 public interface UserActions {
 

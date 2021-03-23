@@ -1,6 +1,6 @@
-package org.rakshith.UserActions.RedisUserActions;
+package org.rakshith.useractions.redisuseractions;
 
-import org.rakshith.UserActions.UserActions;
+import org.rakshith.useractions.UserActions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.json.JSONObject;

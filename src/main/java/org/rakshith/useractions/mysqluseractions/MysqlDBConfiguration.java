@@ -1,4 +1,4 @@
-package org.rakshith.UserActions.MysqlUserActions;
+package org.rakshith.useractions.mysqluseractions;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;

@@ -1,6 +1,6 @@
-package org.rakshith.RESTAPIController;
+package org.rakshith.restapicontroller;
 
-import org.rakshith.UserActions.MysqlUserActions.MysqlUserActions;
+import org.rakshith.useractions.mysqluseractions.MysqlUserActions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
