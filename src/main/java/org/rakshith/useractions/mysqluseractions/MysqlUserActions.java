@@ -18,7 +18,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     public String createUser (String phoneNumber, String name,int age, String location){
         try {
             if (phoneNumber.length() == 10) {
-                con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+                con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
                 PreparedStatement stmt=con.prepareStatement("insert into userdetails values(?,?,?,?)");
                 stmt.setString(1,phoneNumber);
                 stmt.setString(2,name);
@@ -41,7 +41,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String updateUser(String phoneNumber, String name, int age, String location) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("update userdetails set name=?,age=?,location=? where phoneNumber=?");
             stmt.setString(1,name);
             stmt.setInt(2,age);
@@ -65,7 +65,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String deleteUser(String phoneNumber) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("delete from userdetails where phoneNumber=?");
             stmt.setString(1,phoneNumber);
             queryResult = stmt.executeUpdate();
@@ -86,7 +86,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String showUser(String phoneNumber) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("select * from userdetails where phoneNumber=?");
             stmt.setString(1,phoneNumber);
             ResultSet rs=stmt.executeQuery();

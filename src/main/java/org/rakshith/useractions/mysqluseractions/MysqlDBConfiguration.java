@@ -10,8 +10,5 @@ public class MysqlDBConfiguration {
         String sqlUserName = conf.getString("MysqlUserName");
         String sqlPassword = conf.getString("MysqlPassword");
 
-        String MySQLURL = sqlURL;
-        String dbUserName = sqlUserName;
-        String dbPassword = sqlPassword;
         Connection con = null;
 }
