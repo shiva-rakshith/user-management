@@ -2,7 +2,6 @@ package org.rakshith.useractions.mysqluseractions;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-
 import java.sql.Connection;
 
 public class MysqlDBConfiguration {

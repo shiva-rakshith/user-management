@@ -26,7 +26,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
                 stmt.setString(4,location);
                 stmt.executeUpdate();
                 logger.info("Created user details successfully: " + phoneNumber + " " + name + " " + age + " " + location);
-                return "Created user details successfully.";
+                return "Created user details successfully";
             } else {
                 return "Invalid phone number";
             }
@@ -50,7 +50,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
             queryResult = stmt.executeUpdate();
             if (queryResult == 1){
                 logger.info("New details are successfully updated: " + phoneNumber + " " + name + " " + age + " " + location);
-                return "updated user details successfully.";
+                return "User details updated successfully";
             }
             else{
                 return "user does not exist";
@@ -71,7 +71,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
             queryResult = stmt.executeUpdate();
             if (queryResult == 1){
                 logger.info(phoneNumber + " user details deleted successfully.");
-                return "deleted user details successfully.";
+                return "Deleted user details successfully";
             }
             else{
                 return "user does not exist";
@@ -91,7 +91,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
             stmt.setString(1,phoneNumber);
             ResultSet rs=stmt.executeQuery();
             if(rs.next()) {
-                System.out.println("name: "+rs.getString(2)+" age: "+rs.getInt(3)+" location: "+rs.getString(4));
+                return "{\"name\":" +"\""+ rs.getString(2) +"\""+ ",\"age\":" + rs.getInt(3) + ",\"location\":" +"\""+ rs.getString(4)+"\""+"}";
             }
             else{
                 return "user does not exist";

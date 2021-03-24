@@ -20,7 +20,7 @@ public class RedisUserActions extends RedisDBConfiguration implements UserAction
             userDetails = "{\"name\":" +"\""+ name +"\""+ ",\"age\":" + age + ",\"location\":" +"\""+ location+"\"" +"}";
             jedis.set(phoneNumber, userDetails);
             logger.info("Created user details successfully: " + phoneNumber + " " + name + " " + age + " " + location);
-            return "Created user details successfully.";
+            return "Created user details successfully";
         } else {
             return "Invalid phone number";
         }
