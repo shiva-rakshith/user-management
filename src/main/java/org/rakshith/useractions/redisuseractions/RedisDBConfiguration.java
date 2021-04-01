@@ -1,4 +1,4 @@
-package org.rakshith.UserActions.RedisUserActions;
+package org.rakshith.useractions.redisuseractions;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;

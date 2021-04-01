@@ -1,6 +1,6 @@
-package org.rakshith.UserActions.MysqlUserActions;
+package org.rakshith.useractions.mysqluseractions;
 
-import org.rakshith.UserActions.UserActions;
+import org.rakshith.useractions.UserActions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     public String createUser (String phoneNumber, String name,int age, String location){
         try {
             if (phoneNumber.length() == 10) {
-                con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+                con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
                 PreparedStatement stmt=con.prepareStatement("insert into userdetails values(?,?,?,?)");
                 stmt.setString(1,phoneNumber);
                 stmt.setString(2,name);
@@ -26,7 +26,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
                 stmt.setString(4,location);
                 stmt.executeUpdate();
                 logger.info("Created user details successfully: " + phoneNumber + " " + name + " " + age + " " + location);
-                return "Created user details successfully.";
+                return "Created user details successfully";
             } else {
                 return "Invalid phone number";
             }
@@ -41,7 +41,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String updateUser(String phoneNumber, String name, int age, String location) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("update userdetails set name=?,age=?,location=? where phoneNumber=?");
             stmt.setString(1,name);
             stmt.setInt(2,age);
@@ -50,7 +50,7 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
             queryResult = stmt.executeUpdate();
             if (queryResult == 1){
                 logger.info("New details are successfully updated: " + phoneNumber + " " + name + " " + age + " " + location);
-                return "updated user details successfully.";
+                return "User details updated successfully";
             }
             else{
                 return "user does not exist";
@@ -65,13 +65,13 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String deleteUser(String phoneNumber) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("delete from userdetails where phoneNumber=?");
             stmt.setString(1,phoneNumber);
             queryResult = stmt.executeUpdate();
             if (queryResult == 1){
                 logger.info(phoneNumber + " user details deleted successfully.");
-                return "deleted user details successfully.";
+                return "Deleted user details successfully";
             }
             else{
                 return "user does not exist";
@@ -86,12 +86,12 @@ public class MysqlUserActions extends MysqlDBConfiguration implements UserAction
     @Override
     public String showUser(String phoneNumber) {
         try {
-            con = DriverManager.getConnection(MySQLURL, dbUserName, dbPassword);
+            con = DriverManager.getConnection(sqlURL, sqlUserName, sqlPassword);
             PreparedStatement stmt=con.prepareStatement("select * from userdetails where phoneNumber=?");
             stmt.setString(1,phoneNumber);
             ResultSet rs=stmt.executeQuery();
             if(rs.next()) {
-                System.out.println("name: "+rs.getString(2)+" age: "+rs.getInt(3)+" location: "+rs.getString(4));
+                return "{\"name\":" +"\""+ rs.getString(2) +"\""+ ",\"age\":" + rs.getInt(3) + ",\"location\":" +"\""+ rs.getString(4)+"\""+"}";
             }
             else{
                 return "user does not exist";

@@ -1,7 +1,7 @@
-package org.rakshith.DBController;
+package org.rakshith.dbcontroller;
 
-import org.rakshith.UserActions.MysqlUserActions.MysqlUserActions;
-import org.rakshith.UserActions.UserActions;
+import org.rakshith.useractions.mysqluseractions.MysqlUserActions;
+import org.rakshith.useractions.UserActions;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
